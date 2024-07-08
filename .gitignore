@@ -1,0 +1,8 @@
+__pycache__/
+public/
+src/test_htmlnode.py
+src/test_inline_markdown.py
+src/test_leafnode.py
+src/test_parentnode.py
+src/test_textnode.py
+test.sh
