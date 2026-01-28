@@ -9,8 +9,8 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             continue
         split_nodes = []
         sections = old_node.text.split(delimiter)
-        if len(sections) %2 == 0:
-            raise ValueError("Invalid markdown, formatted section not closed")
+        if len(sections) % 2 == 0:
+            raise ValueError("invalid markdown, formatted section not closed")
         for i in range(len(sections)):
             if sections[i] == "":
                 continue
@@ -48,7 +48,7 @@ def split_nodes_image(old_nodes):
                 TextNode(
                     image[0],
                     TextType.IMAGE,
-                    image[1]
+                    image[1],
                 )
             )
             original_text = sections[1]
@@ -60,7 +60,7 @@ def split_nodes_link(old_nodes):
     new_nodes = []
     for old_node in old_nodes:
         if old_node.text_type != TextType.TEXT:
-            new_nodes.append(old_nodes)
+            new_nodes.append(old_node)
             continue
         original_text = old_node.text
         links = extract_markdown_links(original_text)
