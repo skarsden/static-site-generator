@@ -54,6 +54,20 @@ def markdown_to_html_node(markdown):
         children.append(html_node)
     return ParentNode("div", children, None)
 
+def extract_title(markdown):
+    lines = markdown.split("\n")
+    header_exists = False
+    header = ""
+    for line in lines:
+        if line.strip().startswith("# "):
+            header = line
+            header_exists = True
+            break
+
+    if not header_exists:
+        raise Exception("No header exists")
+    return header
+
 def block_to_html_node(block):
     block_type = block_to_block_type(block)
     match block_type:
